@@ -23,14 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-gpwr)uol5dke=mcgus@3sg4#bvl!f__j!ipge22%#7(_hyzhvs"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Cors
+    "corsheaders",
     # My App(s)
     "api.apps.ApiConfig",
     # Django Apps
@@ -52,6 +54,10 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    # Cors Middleware
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    # Django Middleware
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -60,6 +66,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ("http://localhost:8081",)
 
 ROOT_URLCONF = "MCDiscordLink.urls"
 

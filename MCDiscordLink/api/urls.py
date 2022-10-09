@@ -1,12 +1,10 @@
-from django.urls import include, path
-from rest_framework import routers
+from django.urls import include, path, re_path
 from . import views
-
-router = routers.DefaultRouter()
-router.register(r"players", views.PlayersViewSet)
 
 
 urlpatterns = [
-    path("", include(router.urls)),
+    re_path(r"^players$", views.players_list),
+    re_path(r"players/(?P<pk>[0-9]+)$", views.players_detail),
+    re_path(r"^players/linked$", views.players_linked),
     path("api-auth", include("rest_framework.urls", namespace="rest_framework")),
 ]
