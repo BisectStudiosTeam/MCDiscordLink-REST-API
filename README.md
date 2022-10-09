@@ -41,7 +41,7 @@ GET https://mydomain.com/players?discord_id=957437570546012240
 The ID arg is required for this request to work. The ID for a player can be found under the "id" key in the player data json when fetching a player's data. JSON data as seen at the top of this document is also required.
 
 ```
-UPDATE https://mydomain.com/players/<id>
+PUT https://mydomain.com/players/<id>
 ```
 
 <h3>Deleting a specific player</h3>
